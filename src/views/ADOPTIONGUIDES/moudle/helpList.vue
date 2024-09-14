@@ -1,84 +1,91 @@
-：<template>
+：
+<template>
   <div id="helpList">
     <div>
       <el-breadcrumb>
-        <el-breadcrumb-item to="/index"><span>Home</span></el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: `/${$route.name.replace(/ /g, '-') }`}"><span>{{ $route.name }}</span>
+        <el-breadcrumb-item to="/index"><span>{{ $t('home') }}</span></el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: `/${$route.name.replace(/ /g, '-') }`}">
+          <span>{{ $t(`breadcrumb.${$route.name}.title`) }}</span>
         </el-breadcrumb-item>
-        <el-breadcrumb-item v-if="routeState" :to="{ path: `/${$route.name.replace(/ /g, '-') }/${state.replace(/[ ,&.,']/g, '-').replace(/-+/g, '-')}`}">{{
+        <el-breadcrumb-item v-if="routeState"
+                            :to="{ path: `/${$route.name.replace(/ /g, '-') }/${state.replace(/[ ,&.,']/g, '-').replace(/-+/g, '-')}`}">
+          {{
             state
           }}
         </el-breadcrumb-item>
         <el-breadcrumb-item v-if="$route.params.area"
-                            :to="{ path: `/${$route.name.replace(/ /g, '-') }/${state.replace(/[ ,&.]/g, '-').replace(/-+/g, '-')}/${$route.params.area.replace(/[ ,&.,']/g, '-').replace(/-+/g, '-')}`}">
+         :to="{ path: `/${$route.name.replace(/ /g, '-') }/${state.replace(/[ ,&.]/g, '-').replace(/-+/g, '-')}/${$route.params.area.replace(/[ ,&.,']/g, '-').replace(/-+/g, '-')}`}">
           {{ area }}
         </el-breadcrumb-item>
         <el-breadcrumb-item v-if="$route.params.oid"></el-breadcrumb-item>
       </el-breadcrumb>
-      <div v-if="!$route.params.oid" class="ADOPTIONGUIDES-title">{{ title }} Near Me
+      <div v-if="!$route.params.oid" class="ADOPTIONGUIDES-title">{{ $t(`breadcrumb.${$route.name}.title`) }} {{ $t('pro-Bono.tipTxt.nearby') }}
         {{
           state ? $route.params.area ? `in ${area}, ${state}` : `in ${state}` : ''
         }}
       </div>
-<!--      <div class="ADOPTIONGUIDES-title">{{ title }}</div>-->
+      <!--      <div class="ADOPTIONGUIDES-title">{{ title }}</div>-->
       <div class="ADOPTIONGUIDES-lists grid-three" v-if="!$route.params.area">
         <div class="ADOPTIONGUIDES-list " v-for="(item,index) in sheltersList" :key="index" @click="clickFn(item)">
           <span class="ADOPTiONGUIDES-span" v-if="item.area">{{ item.area }}</span>
           <span class="ADOPTiONGUIDES-span" v-else>{{ item.state }}</span>
-          <span class="num">{{ item.total }} {{ item.total > 1 ? 'Clinics' : 'Clinic' }}  > </span>
-
+          <span class="num">{{ item.total }} {{ item.total > 1 ? $t('pro-Bono.unit.more') : $t('pro-Bono.unit.one') }}  > </span>
         </div>
       </div>
       <div v-if="!$route.params.oid && $route.params.area">
-
         <information :informationList="informationList"></information>
       </div>
       <div v-if="$route.params.oid">
-
         <detail></detail>
       </div>
       <section v-if="!$route.params.oid" class="layout-faq">
-        <h2 class="layout-mintit">Frequently Asked Questions</h2>
+        <h2 class="layout-mintit">{{ $t('pro-Bono.asked.title') }}</h2>
         <div class="layout-faq-box">
           <div class="layout-faq-item">
             <div class="layout-faq-q">
-              What Services Does USDentalService Provide?
+              {{ $t('pro-Bono.asked.ask0.title') }}
             </div>
             <div class="layout-faq-a">
-              <p>USDentalService is committed to aiding individuals who need free or low-cost dental care. Our platform primarily collates two types of information to assist users in addressing their dental health concerns.</p>
-              <p>Our website features a comprehensive directory of nearby dental service providers, including free dental clinics, low-cost dental offices, dental schools, community health centers, and public health departments. Users can leverage this information to find suitable clinics or dental professionals catering to their dental needs.</p></div>
-          </div>
-          <div class="layout-faq-item">
-            <div class="layout-faq-q">
-              How Can I Get Information About Nearby Dental Clinics?
+              <p>{{ $t('pro-Bono.asked.ask0.intro0') }}</p>
+              <p>{{ $t('pro-Bono.asked.ask0.intro1') }}</p>
             </div>
-            <div class="layout-faq-a">
-<p>To locate information about nearby dental service providers, you should initially navigate to the directory page on USDentalService, accessed from our homepage. Once you're on the directory page, select the state where you currently reside or where you are seeking dental care. On the state page, you can peruse the list of clinics and choose the ones that pique your interest. By clicking on a specific clinic's page, you can find detailed information about that dental clinic, including their address, contact number, services they offer, and so on.</p>          </div>
-          <div class="layout-faq-item">
-            <div class="layout-faq-q">
-              Where Can I Find Free Dental Knowledge?
-            </div>
-            <div class="layout-faq-a">
-              <p>You can explore the articles on our website for free dental knowledge. We offer four categories of dental topics: Dental Implants, Dentures, Orthodontics, and Dental Insurance. Users can find the information they are looking for from our dental knowledge resources.</p></div>
-          </div>
-          <div class="layout-faq-item">
-            <div class="layout-faq-q">
-              What Is The Cost Of Dental Services On USDentalService?
-            </div>
-            <div class="layout-faq-a">
-              <p>The dental services information we provide is entirely FREE. All details about various dental service providers and dental posts on USDentalService are FREE OF CHARGE. However, it's crucial to understand that we are not directly associated with any dental clinic or dentist. As a result, we cannot be held responsible for the quality of dental services they provide or any fees incurred from engaging with them.</p></div>
-          </div>
-          <div class="layout-faq-item">
-            <div class="layout-faq-q">
-              What Else Should I Know About Free Dental Services On USDentalService?
-            </div>
-            <div class="layout-faq-a">
-              <p>Please remember that access to free and low-cost dental services is not universal. Eligibility for these services often involves specific requirements or application procedures. Your qualification might be based on eligibility for government assistance, income level, geographic location, and age group, among other criteria. Before further discussions, verifying with the dental service provider whether you qualify for their assistance is crucial.</p>
-              <p>The information on our website about any dental service provider comes directly from the respective provider's website. Consequently, we cannot assure the accuracy or validity of this information. If you have any doubts about the details on our website, please get in touch with the dental service provider for confirmation. Our website is regularly updated and maintained, so there might be times when we can only guarantee that some information is entirely accurate and current. We are dedicated to continuously adding new clinics and dentists to our listings and updating our content with the most recent information as it becomes available.</p></div>
-          </div>
+            <div class="layout-faq-item">
+              <div class="layout-faq-q">
+                {{ $t('pro-Bono.asked.ask1.title') }}
+              </div>
+              <div class="layout-faq-a">
+                <p>{{ $t('pro-Bono.asked.ask1.intro0') }}</p>
+                <div class="layout-faq-item">
+                  <div class="layout-faq-q">
+                    {{ $t('pro-Bono.asked.ask2.title') }}
+                  </div>
+                  <div class="layout-faq-a">
+<p>{{ $t('pro-Bono.asked.ask2.intro0') }}  </p>
+                </div>
+                <div class="layout-faq-item">
+                  <div class="layout-faq-q">
+                    {{ $t('pro-Bono.asked.ask3.title') }}
+                  </div>
+                  <div class="layout-faq-a">
+                    <p>
+                      {{ $t('pro-Bono.asked.ask3.intro0') }}
+                    </p></div>
+                </div>
+                <div class="layout-faq-item">
+                  <div class="layout-faq-q">
+                    {{ $t('pro-Bono.asked.ask4.title') }}
+                  </div>
+                  <div class="layout-faq-a">
+                    <p>{{ $t('pro-Bono.asked.ask4.intro0') }}</p>
+                    <p>{{ $t('pro-Bono.asked.ask4.intro1') }}</p>
+                  </div>
+                </div>
 
+              </div>
+
+            </div>
+          </div>
         </div>
-
         </div>
       </section>
 
@@ -100,11 +107,11 @@ export default {
     return {
       title: 'FIND SHELTERS & VET',
       state: null,
-      routeState:'',
-      area:'',
+      routeState: '',
+      area: '',
       firstPath: '',
       chooseTitle: '',
-      informationList:[],
+      informationList: [],
       sheltersList: [
         {
           name: 'Alabama',
@@ -147,8 +154,8 @@ export default {
   methods: {
     init () {
       this.title = this.$route.name
-      this.state = this.$route.params.state ? this.$route.params.state.replace(/-/g, ' '):null
-      this.area = this.$route.params.area ? this.$route.params.area.replace(/-/g, ' '):null
+      this.state = this.$route.params.state ? this.$route.params.state.replace(/-/g, ' ') : null
+      this.area = this.$route.params.area ? this.$route.params.area.replace(/-/g, ' ') : null
       // this.type = localStorage.getItem('denType')
       this.routeState = this.$route.params.state
       this.routeState == null ? this.getStateFn() : this.$route.params.area ? this.getInformationFn() : this.getAreaFn()
@@ -175,7 +182,6 @@ export default {
           }
         )
       }
-
 
       // item.area ? this.getInformationFn(item) : this.getAreaFn(item)
     },
@@ -226,7 +232,7 @@ export default {
   }
 
   .ADOPTIONGUIDES-lists {
-    grid-gap:0px !important;
+    grid-gap: 0px !important;
     //margin-top: 20px;
   }
 

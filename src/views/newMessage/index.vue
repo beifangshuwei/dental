@@ -7,7 +7,7 @@
           <div class="new-con">
             <features
               name=""
-              title="Dental Knowledge"
+              :title="$t('msg.title')"
               bottompx="40px"
             >
               <template v-slot:one>
@@ -19,7 +19,7 @@
               @current-change="handleCurrentChange"
               :current-page.sync="pageNo"
               :page-size="pageSize"
-              layout="total, pager"
+              layout="pager"
               :total="total">
             </el-pagination>
           </div>

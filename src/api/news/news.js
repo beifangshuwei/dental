@@ -29,7 +29,11 @@ export function newsList () {
  * @param area
  * @param dataType
  */
-export function newsMessage (params) {
+export function newsMessage (data) {
+  const params = {
+    ...data,
+    language: localStorage.getItem('language') || 'es'
+  }
   return service({
     url: '/web/articleJson/getIdPetArticle',
     method: 'get',

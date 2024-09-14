@@ -36,8 +36,11 @@ export function getIcon (params) {
 /**
  * 列表详细信息
  */
-export function getInformation (params) {
-
+export function getInformation (data) {
+  const params = {
+    ...data,
+    language: localStorage.getItem('language') || 'es'
+  }
   return service({
     url: '/web/dentist/getDentist',
     params,

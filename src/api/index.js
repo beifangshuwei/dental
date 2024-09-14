@@ -14,7 +14,11 @@ export function random (params) {
 /**
  * 获取推荐文章或者文章列表
  */
-export function articleRandom (params) {
+export function articleRandom (data) {
+  const params = {
+    ...data,
+    language: localStorage.getItem('language') || 'es'
+  }
   return service({
     url: '/web/articleJson/getDentistArticle',
     params,
@@ -73,7 +77,11 @@ export function getArticle (params) {
 /**
  * 获取文章详情
  */
-export function petArticle (params) {
+export function petArticle (data) {
+  const params = {
+    ...data,
+    language: localStorage.getItem('language') || 'es'
+  }
   return service({
     url: '/web/articleJson/getIdPetArticle',
     params,
@@ -85,6 +93,7 @@ export function petArticle (params) {
  * 获取事务所详情
  */
 export function getLawyerInformation (params) {
+
   return service({
     url: '/web/pet/getLawyerInformation',
     params,

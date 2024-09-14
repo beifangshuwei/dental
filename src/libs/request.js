@@ -22,7 +22,6 @@ service.apiUrl = baseUrl
  * 请求参数处理
  */
 service.interceptors.request.use(config => {
-  console.log(config)
   return config
   // const token = getToken()
 

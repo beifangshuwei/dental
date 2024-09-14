@@ -4,8 +4,10 @@
   >
     <div class="ADOPTIONGUIDES-sidebar">
       <div class="sidebar-intro">
-        <h2 class="sidebar-intro-q">About Free Dental Service</h2>
-        <p class="sidebar-intro-a"> Free or low-cost dental clinics exist in the U.S. to help bridge the gap in dental care accessibility, particularly for individuals who may not have the means to afford regular dental services. These clinics are often funded by government programs, non-profit organizations, or charitable donations, aiming to provide essential dental care to those most in need. These services are typically targeted toward low-income individuals and families, uninsured individuals, children and seniors, and people on government assistance.</p>
+        <h2 class="sidebar-intro-q">{{$t('pro-Bono.what.title')}}</h2>
+        <p class="sidebar-intro-a">
+          {{$t('pro-Bono.what.content')}}
+        </p>
       </div>
       <message-aside :msg-list="msgList"></message-aside>
     </div>

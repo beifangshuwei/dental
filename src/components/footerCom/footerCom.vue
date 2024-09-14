@@ -1,7 +1,6 @@
 <template>
   <!-- 底部 -->
   <div id="footer">
-
     <div class="logo">UsDentaList
     </div>
     <div class="main">

@@ -33,79 +33,68 @@
           <img decoding="async" id="image" src="../../assets/image/index/banner-desktop.webp" alt="">
         </div>
         <div class="index-banner">
-          <div class="banner-title">Encuentre servicio <span> dental </span> gratuito</div>
+          <div class="banner-title">{{ $t('index.header.headerTitle1') }} <span>{{ $t('index.header.headerTitle2') }}</span> {{ $t('index.header.headerTitle3') }}</div>
           <div class="banner-select">
-            <el-input placeholder="search" v-model="searchValue">
+            <el-input :placeholder="$t('index.header.search')" v-model="searchValue">
             </el-input>
-            <div class="select-search" @click="searchFn(null)">search</div>
+            <div class="select-search" @click="searchFn(null)">{{ $t('index.header.search') }}</div>
           </div>
-          <div class="banner-label"><span>Trending:</span>
-            <!--            Búsquedas populares :-->
-            <div @click="searchFn('dental implants')">dental implants</div>
-            <div @click="searchFn('dental schools')">dental schools</div>
-            <div @click="searchFn('dentist and dentures')">dentist and dentures</div>
+          <div class="banner-label"><span>{{ $t('index.headerSearch.trending') }}:</span>
+            <div @click="searchFn('legal aid')">{{ $t('index.headerSearch.search1') }}</div>
+            <div @click="searchFn('accidental lawyer')">{{ $t('index.headerSearch.search2') }}</div>
+            <div @click="searchFn('get lawyer help')">{{ $t('index.headerSearch.search3') }}</div>
+            <div @click="searchFn('bankruptcy lawyer')">{{ $t('index.headerSearch.search4') }}</div>
           </div>
 
         </div>
         <div class="banner-number">
           <div v-for="(item,index) in allList.numList" :key="index">
             <div class="number-num">{{ item.num }}</div>
-            <div class="number-content">{{ item.content }}</div>
+            <div class="number-content">{{ $t(`index.number.number${index+1}`) }}</div>
           </div>
         </div>
 
       </div>
       <div class="index-moudle show-list">
-        <features title="Nearby Dental Help">
+        <features :title="$t('index.legal-offices.title')">
           <template v-slot:two>
             <ul class="index-moudle1 index-moudle-ul content-width grid-four">
-
               <li
                 v-for="(item, index) in allList.produceList"
                 :key="index"
                 class="curser-hover"
               >
-                <router-link :to="`/${item.categoryItem.replace(/\s+/g, '-')}`">
+                <router-link :to="`/${ $t(`index.legal-offices.list.list${index}.name`).replace(/\s+/g, '-')}`">
                   <div class="img-container">
-
-
-                  <img :src="item.img" alt="">
+                     <img :src="item.img" alt="">
                   </div>
                   <div>
-                    <div class="newTitle mle">{{ item.categoryItem }}</div>
+                    <div class="newTitle mle">{{ $t(`index.legal-offices.list.list${index}.name`) }}</div>
                     <div class="newMore">
-                      {{ item.type }}
+                      {{ $t(`index.legal-offices.list.list${index}.type`)}}
                       <svg-icon icon-class="right"></svg-icon>
-
                     </div>
                   </div>
                 </router-link>
               </li>
-
-              <!--              <li class="curser-hover toMore">-->
-              <!--                <RouterLink to="/Pro-Bono-Offices">-->
-              <!--                  <div class="module1-title">Learn More</div>-->
-              <!--                  <svg-icon icon-class="right"></svg-icon>-->
-              <!--                </RouterLink>-->
-              <!--              </li>-->
             </ul>
           </template>
         </features>
       </div>
       <div class="index-moudle newMessage">
-        <features title="Dental Knowledge">
+        <features :title="$t('index.free.title')">
           <template v-slot:one>
             <ul class="choose-list  content-width ">
               <router-link :to="{path:'/news',query:{type:'Dental Health'}}" tag="li">
-                Dental Health
+               {{$t('index.free.liList.li1')}}
               </router-link> <router-link :to="{path:'/news',query:{type:'Dental Care'}}" tag="li">
-                Dental Care
+              {{$t('index.free.liList.li2')}}
               </router-link>
               <router-link :to="{path:'/news',query:{type:'Dental Treatments & Procedures'}}" tag="li">
-                Dental Treatments & Procedures
+                {{$t('index.free.liList.li3')}}
               </router-link>
               <router-link :to="{path:'/news',query:{type:'Dental Insurance & Costs'}}" tag="li">
-                Dental Insurance & Costs
+                {{$t('index.free.liList.li4')}}
               </router-link>
             </ul>
           </template>
@@ -118,11 +107,9 @@
                   <div class="newTitle mle">{{ item.title }}</div>
                   <span v-for="(item1,index1) in item.label" :key="index1">{{ item1 }}</span>
                   <div class="newMore">
-
                     <div>
                       Read More
                     </div>
-
                   </div>
                 </div>
               </router-link>
@@ -131,11 +118,11 @@
           </template>
 
         </features>
-        <router-link to="/news" tag="div" class="newMessage-more">More legal advices</router-link>
+        <router-link to="/news" tag="div" class="newMessage-more">{{$t('index.free.moreButton') }}</router-link>
       </div>
       <div class="index-moudle friend">
         <features
-          title="Acerca de USDentalService"
+          :title="$t('index.about.title')"
         >
           <template v-slot:one>
             <ul class="index-moudle-ul content-width grid-three">
@@ -150,8 +137,8 @@
                     alt=""
                   >
                 </div>
-                <div class="frind_name">{{ item.name }}</div>
-                <div class="friend_title">{{ item.title }}</div>
+                <div class="frind_name">{{ $t(`index.about.about${index+1}.name`) }}</div>
+                <div class="friend_title">{{ $t(`index.about.about${index+1}.intro`) }}</div>
 
               </li>
             </ul>
