@@ -32,7 +32,7 @@ export function newsList () {
 export function newsMessage (data) {
   const params = {
     ...data,
-    language: localStorage.getItem('language') || 'es'
+    language: localStorage.getItem('language') || 'en'
   }
   return service({
     url: '/web/articleJson/getIdPetArticle',

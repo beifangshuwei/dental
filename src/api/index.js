@@ -17,7 +17,7 @@ export function random (params) {
 export function articleRandom (data) {
   const params = {
     ...data,
-    language: localStorage.getItem('language') || 'es'
+    language: localStorage.getItem('language') || 'en'
   }
   return service({
     url: '/web/articleJson/getDentistArticle',
@@ -80,7 +80,7 @@ export function getArticle (params) {
 export function petArticle (data) {
   const params = {
     ...data,
-    language: localStorage.getItem('language') || 'es'
+    language: localStorage.getItem('language') || 'en'
   }
   return service({
     url: '/web/articleJson/getIdPetArticle',

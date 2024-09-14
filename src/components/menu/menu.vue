@@ -101,7 +101,7 @@ export default {
   data () {
     return {
       popclass: localStorage.getItem('changeRoute'),
-      langValue: localStorage.getItem('language') || 'es'
+      langValue: localStorage.getItem('language') || 'en'
     }
   },
   methods: {

@@ -8,7 +8,7 @@ import en from './modules/en';
 Vue.use(VueI18n)
 // 从localStorage获取语言选择。
 const i18n = new VueI18n({
-  locale: localStorage.getItem('language') || 'es', // 初始未选择默认 es
+  locale: localStorage.getItem('language') || 'en', // 初始未选择默认 es
   messages: {
     es,
     en

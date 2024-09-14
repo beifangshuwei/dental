@@ -39,7 +39,7 @@ export function getIcon (params) {
 export function getInformation (data) {
   const params = {
     ...data,
-    language: localStorage.getItem('language') || 'es'
+    language: localStorage.getItem('language') || 'en'
   }
   return service({
     url: '/web/dentist/getDentist',
