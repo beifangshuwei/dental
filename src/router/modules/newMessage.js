@@ -7,7 +7,7 @@ var newMessageRouter = [{
   component: () => import('@/views/newMessage'),
 
 }, {
-  path: '/news/content',
+  path: '/news/content/:id?',
   name: 'newsContent',
   component: () => import(/* webpackChunkName: "about" */ '@/views/newMessage/newsContent.vue')
 }]

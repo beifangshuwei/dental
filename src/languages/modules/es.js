@@ -35,7 +35,7 @@ export default {
       list3: 'Cerca de mí'
     },
     menu1: {
-      title: 'Asesoramiento Jurídico Gratuito',
+      title: 'Conocimiento dental',
       // 1-9
       list0: 'Salud dental',
       list1: 'Cuidado dental',
@@ -93,7 +93,8 @@ export default {
       search2:
         'escuelas de odontologia',
       search3:
-        'dentista & dentaduras postizas'
+        'dentista & dentaduras postizas',
+
     },
     // banner图数字
     number: {
@@ -111,16 +112,16 @@ export default {
         intro:
           '',
         list: {
-          list0: { name: 'Clinicas dentales', type: 'Gratis' },
-          list1: { name: 'Consultorios dentales', type: 'Asequible' },
-          list2: { name: 'Servicio dental', type: 'Bajo costo' },
-          list3: { name: 'Cerca de mí', type: 'Dentistas locales' }
+          list0: { name: 'Clinicas dentales',link:'Dental-Clinics', type: 'Gratis' },
+          list1: { name: 'Consultorios dentales',link:'Dental-Offices', type: 'Asequible' },
+          list2: { name: 'Servicio dental',link:'Dental-Service', type: 'Bajo costo' },
+          list3: { name: 'Cerca de mí',link:'Near-Me', type: 'Dentistas locales' }
         }
       },
     free: {
       title: 'Conocimiento dental',
       intro: '',
-      moreButton: 'Más asesoramiento legal',
+      moreButton: 'Más temas dentales',
       liList:
         {
           li1: 'Salud dental',

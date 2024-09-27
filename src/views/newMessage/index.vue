@@ -133,8 +133,8 @@ export default {
     newMessage (item) {
       this.$router.push({
         // name: 'newsContent',
-        path: '/news/content',
-        query: { newsId: item.id }
+        path: `/news/content/${item.uid}`,
+        // query: { newsId: item.id }
       })
     }
   }

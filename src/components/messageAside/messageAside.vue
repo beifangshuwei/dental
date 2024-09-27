@@ -7,7 +7,7 @@
           <router-link to="/Dental-Clinics">
             <div class="aside-tool-item">
               <span class="tool-text">
-                {{$t('menu.menu0.title')}}
+                {{ $t('menu.menu0.title') }}
               </span>
             </div>
           </router-link>
@@ -16,7 +16,7 @@
           <router-link to="/news">
             <div class="aside-tool-item">
               <span class="tool-text">
-               {{$t('menu.menu1.title')}}
+               {{ $t('menu.menu1.title') }}
               </span>
             </div>
           </router-link>
@@ -29,7 +29,7 @@
         <li @click="liActive({label:''})" :class="liActiveItem?.label === ''?'active':'' "><span>All</span></li>
         <li v-for="(item,index) in liList" :key="index" @click="liActive(item)"
             :class="liActiveItem?.label === item.label?'active':'' ">
-          <span>{{$t(`breadcrumb.${item.label}.title`)}}{{ item?.count }}</span>
+          <span>{{ $t(`breadcrumb.${item.label}.title`) }}{{ item?.count }}</span>
           <!--                <a href="?category_filter=all-about-foster-care&amp;term=">{{ item.name }}({{ item.num }})</a>-->
           <span></span>
         </li>
@@ -64,7 +64,7 @@
       </div>
     </div>
     <div class="aside-msg aside-div" v-if="msgList">
-      <h1>{{$t('aside.msg')}}</h1>
+      <h1>{{ $t('aside.msg') }}</h1>
       <div class="aside-msg-con" v-for="(item,index) in msgList" :key="index" @click="msgClick(item)">
         <div class="aside-msg-item">
           <img class="lazyload" src="https://img.ttsnews.com/mr.webp"
@@ -83,7 +83,7 @@
       </div>
     </div>
     <div class="aside-msg aside-div" v-if="petList">
-      <h1>{{$t('aside.msg')}}</h1>
+      <h1>{{ $t('aside.msg') }}</h1>
       <div class="aside-msg-con" v-for="(item,index) in petList" :key="index" @click="petClick(item)">
         <div class="aside-msg-item">
           <img :src="item.img" alt="">
@@ -158,8 +158,8 @@ export default {
     },
     msgClick (item) {
       this.$router.push({
-        path: '/news/content',
-        query: { newsId: item.id }
+        path: `/news/content/${item.uid}`
+        // query: { newsId: item.id }
       })
     },
     petClick (item) {

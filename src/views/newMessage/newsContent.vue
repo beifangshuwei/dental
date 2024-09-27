@@ -67,7 +67,7 @@
 <script>
 
 
-import { getPetArticleList} from '@/libs/utils.js'
+import { getPetArticleList } from '@/libs/utils.js'
 import { petArticle } from '@/api/index'
 
 export default {
@@ -81,7 +81,8 @@ export default {
     }
   },
   async mounted () {
-    this.newsId = this.$route.query.newsId
+    // console.log(this.$route.query.newsId)
+    this.newsId = this.$route.params.id
     this.getPetArticleFn()
     this.msgList = await getPetArticleList()
   },
@@ -136,15 +137,14 @@ export default {
     }
 
     .title {
-
       line-height: 60px;
-      font-size: 44px;
-      font-weight: 500;
+      font-size: 32px;
+      font-weight: 600;
     }
 
     .info {
       font-size: 14px;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
 
       .auto {
         margin-right: 30px;
@@ -294,6 +294,10 @@ export default {
         }
       }
 
+      /deep/ img {
+        width: 100%;
+        margin: 10px 0;
+      }
     }
   }
 }

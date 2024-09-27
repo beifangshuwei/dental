@@ -31,14 +31,15 @@ export default {
       pageSize:
         20
     }).then(res => {
-      this.queryList = res.data.list
+      this.queryList = res.data.dentistIconDTOList
+
     })
   },
   methods: {
     searchListFn (item) {
       this.$router.push({
-        path: '/help/detail',
-        query: { oid: item.oid }
+        path: item.categoryItem.replace(/ /g, '-') + '/' + item.state + '/' + item.area + '/' + item.ly,
+        // query: { oid: item.oid }
       })
     }
   }
@@ -47,13 +48,16 @@ export default {
 
 <style scoped lang="less">
 #search {
+  padding: 0 20px;
   @media screen and (max-width: 800px) {
     flex-direction: column;
   }
   display: flex;
-  justify-content: center;
+  justify-content: left;
   margin-top: 40px;
+  //width: 100%;
   width: 100%;
+  max-width: 1200px;
 
   .search-box {
     max-width: 800px;
@@ -83,9 +87,10 @@ export default {
 
       color: var(--txt_color);
     }
-    &:hover{
+
+    &:hover {
       //font-weight: 600;
-      .search-name{
+      .search-name {
         text-decoration: underline;
         font-weight: 600;
       }

@@ -9,15 +9,16 @@
       <div class="hearder-content">
         <div class="main-name">
           <router-link :to="logo.path" @click.native="setPopClass(logo)">
-            <span :style="{ color: popclass === 'index' ? '#fff' : '#333'}">UsDentaList</span>
+            <span :style="{ color: popclass === 'index' ? '#fff' : '#333'}">USDentaList</span>
           </router-link>
         </div>
+        <div class="main-menu">
         <!--  移动端      -->
         <div class="hearder-svg">
           <el-dropdown>
            <span class="el-dropdown-link">
               <svg-icon class-name="hearderIcon"
-                        :icon-class="popclass === 'index' ? 'list-white' : 'list-black'"></svg-icon>
+                        :icon-class="popclass === 'index' ? 'list' : 'list-black'"></svg-icon>
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item v-for="(item, index) in menus" :key="index" divided>
@@ -69,6 +70,7 @@
             value="en">
           </el-option>
         </el-select>
+        </div>
       </div>
 
       <!--      <div-->
@@ -183,6 +185,7 @@ export default {
     .hearder-svg {
       height: 100%;
       line-height: @head_height;
+      margin-right: 20px;
 
       .hearderIcon {
         width: 32px;
@@ -210,6 +213,9 @@ export default {
           font-size: 26px;
         }
       }
+    }
+    .main-menu{
+      display: flex;
     }
 
     .main-item {

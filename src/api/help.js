@@ -25,7 +25,8 @@ export function getArea (params) {
 /**
  * 详细列表
  */
-export function getIcon (params) {
+export function getIcon (data) {
+  const params = { ...data, language: localStorage.getItem('language') || 'en' }
   return service({
     url: '/web/dentist/getDentistIcon',
     params,

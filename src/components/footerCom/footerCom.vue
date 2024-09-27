@@ -1,7 +1,7 @@
 <template>
   <!-- 底部 -->
   <div id="footer">
-    <div class="logo">UsDentaList
+    <div class="logo">USDentaList
     </div>
     <div class="main">
       <a href="">About Us</a> |

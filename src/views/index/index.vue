@@ -3,32 +3,7 @@
 
     <div class="index">
       <div class="vedio">
-        <!-- <video
-         poster="../../assets/image/视频.png"
-          autoplay="autoplay"
-          muted
-          width="100%"
-          loop
-          preload="preload"
-          data-role="txp_video_tag"
-        >
-          <source
-            src="@/assets/vedio/官网抬头视频.mp4"
-            type="video/mp4"
-          >
-        </video> -->
-        <!--        <video-->
-        <!--          poster="../../assets/image/视频.png"-->
-        <!--          preload="none"-->
-        <!--          autoplay="autoplay"-->
-        <!--          muted-->
-        <!--          width="100%"-->
-        <!--          loop-->
-        <!--          data-role="txp_video_tag"-->
-        <!--        >-->
-        <!--          &lt;!&ndash; preload="auto" &ndash;&gt;-->
-        <!--          <source src="@/assets/vedio/官网抬头视频.mp4" type="video/mp4" />-->
-        <!--        </video>-->
+
         <div class="image-container">
           <img decoding="async" id="image" src="../../assets/image/index/banner-desktop.webp" alt="">
         </div>
@@ -40,10 +15,9 @@
             <div class="select-search" @click="searchFn(null)">{{ $t('index.header.search') }}</div>
           </div>
           <div class="banner-label"><span>{{ $t('index.headerSearch.trending') }}:</span>
-            <div @click="searchFn('legal aid')">{{ $t('index.headerSearch.search1') }}</div>
-            <div @click="searchFn('accidental lawyer')">{{ $t('index.headerSearch.search2') }}</div>
-            <div @click="searchFn('get lawyer help')">{{ $t('index.headerSearch.search3') }}</div>
-            <div @click="searchFn('bankruptcy lawyer')">{{ $t('index.headerSearch.search4') }}</div>
+            <div @click="searchFn($t('index.headerSearch.search1') )">{{ $t('index.headerSearch.search1') }}</div>
+            <div @click="searchFn($t('index.headerSearch.search2'))">{{ $t('index.headerSearch.search2') }}</div>
+            <div @click="searchFn($t('index.headerSearch.search3') )">{{ $t('index.headerSearch.search3') }}</div>
           </div>
 
         </div>
@@ -64,7 +38,7 @@
                 :key="index"
                 class="curser-hover"
               >
-                <router-link :to="`/${ $t(`index.legal-offices.list.list${index}.name`).replace(/\s+/g, '-')}`">
+                <router-link :to="`/${ $t(`index.legal-offices.list.list${index}.link`)}`">
                   <div class="img-container">
                      <img :src="item.img" alt="">
                   </div>
@@ -101,8 +75,8 @@
           <template v-slot:two>
             <ul class="message index-moudle-ul content-width grid-three">
 
-              <router-link v-for="(item, index) in allList.messageList.newsList" tag="li" :key="index" to="/news">
-                <img src="https://img.ttsnews.com/mr.webp" :data-img="item.img" class="lazyload" alt="">
+              <router-link v-for="(item, index) in allList.messageList.newsList" tag="li" :key="index" :to="`/news/content/${item.uid}`">
+                <img data-img="item.img" class="lazyload" alt="">
                 <div>
                   <div class="newTitle mle">{{ item.title }}</div>
                   <span v-for="(item1,index1) in item.label" :key="index1">{{ item1 }}</span>
@@ -258,20 +232,19 @@ export default {
         setTimeout(() => {
           document
             .querySelectorAll('.lazyload').forEach(function (img) {
-            var src = img.getAttribute('data-src')
-            var ImgObj = new Image()
-            ImgObj.src = src
-            if (ImgObj.fileSize > 0 || (ImgObj.width > 0 || ImgObj.height > 0)) {
+              var src = img.getAttribute('data-src')
+              var ImgObj = new Image()
+              ImgObj.src = src
+              if (ImgObj.fileSize > 0 || (ImgObj.width > 0 || ImgObj.height > 0)) {
               // console.log('true')
-              img.src = src
-              return true
-            } else {
-              console.log('false')
-              img.src = 'https://img.ttsnews.com/mr.webp'
-              return false
-            }
-
-          })
+                img.src = src
+                return true
+              } else {
+                console.log('false')
+                img.src = 'https://img.ttsnews.com/mr.webp'
+                return false
+              }
+            })
         }, 400)
       })
     },
@@ -285,8 +258,8 @@ export default {
     },
     // 点击搜索
     searchFn (item) {
-      // console.log(item)
-      this.searchValue = item ? item : this.searchValue
+      this.searchValue = item || this.searchValue
+      console.log(this.searchValue)
       this.$router.push({
         // name: 'newsContent',
         path: '/search',
@@ -306,7 +279,6 @@ export default {
 <style lang="less" scoped>
 #index {
   width: 100%;
-  //min-width: 1550px;
   .el-card__body,
   .el-main {
     padding: 0px;
@@ -342,7 +314,6 @@ export default {
         //filter:hue-rotate(200deg) saturate(15) brightness(0.4);
         background-color: #ffffff;
       }
-
 
       .index-banner {
         position: absolute;
@@ -476,7 +447,6 @@ export default {
             margin-bottom: 30px;
           }
 
-
           .banner-label {
             display: flex;
             flex-wrap: wrap;
@@ -543,7 +513,6 @@ export default {
             font-size: 14px;
             color: #FFFFFF;
             line-height: 16px;
-
 
             span {
               margin-right: 6px;
@@ -941,12 +910,10 @@ export default {
     margin-bottom: 30px;
   }
 
-
   .el-input__inner {
     border: 0px;
     font-size: 18px;
   }
-
 
   @media screen and (max-width: 800px) {
     .search-middleBox {
@@ -995,7 +962,6 @@ export default {
       }
     }
 
-
   }
   @media screen and (max-width: 1000px) {
     .index-moudle{
@@ -1024,7 +990,7 @@ export default {
     }
     .select-search {
       padding: 4px 10px !important;
-      top: 13px !important;
+      top: 8px !important;
       right: 10px !important;
     }
     .newMessage{

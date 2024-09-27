@@ -35,7 +35,7 @@ export default {
       list3: 'Near Me'
     },
     menu1: {
-      title: 'Free LegaI Advice',
+      title: 'Dental Knowledge',
       // 1-9
       list0: 'Dental Health',
       list1: 'Dental Care',
@@ -86,9 +86,9 @@ export default {
   index: {
     // banner图标题
     header: {
-      headerTitle1: 'Encuentre',
-      headerTitle2: 'servicio dental',
-      headerTitle3: 'gratuito',
+      headerTitle1: 'Find ',
+      headerTitle2: 'Free ',
+      headerTitle3: 'Dental Service',
       search: 'search'
     },
     // banner图搜索
@@ -99,7 +99,8 @@ export default {
       search2:
         'dental schools',
       search3:
-        'dentist and dentures'
+        'dentist and dentures',
+
     },
     // banner图数字
     number: {
@@ -117,16 +118,16 @@ export default {
         intro:
           '',
         list: {
-          list0: { name: 'Dental Clinics', type: 'Free' },
-          list1: { name: 'Dental Offices', type: 'Affordable' },
-          list2: { name: 'Dental Service', type: 'Low-cost' },
-          list3: { name: 'Near Me', type: 'Local Dentists' }
+          list0: { name: 'Dental Clinics', type: 'Free',link:'Dental-Clinics' },
+          list1: { name: 'Dental Offices', type: 'Affordable',link:'Dental-Offices' },
+          list2: { name: 'Dental Service', type: 'Low-cost' ,link:'Dental-Service'},
+          list3: { name: 'Near Me', type: 'Local Dentists' ,link:'Near-Me'}
         }
       },
     free: {
       title: 'Dental Knowledge',
       intro: '',
-      moreButton: 'More legal advices',
+      moreButton: 'More dental topics',
       liList:
         {
           li1: 'Dental Health',
